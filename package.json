@@ -1,0 +1,32 @@
+{
+  "name": "apothecarist",
+  "version": "0.0.1",
+  "description": "\"Mini-game about an apothecary hobbyist who explores his little village in pursuit of understanding herbs and their health effects.\"",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "forest",
+    "ranger",
+    "game",
+    "village"
+  ],
+  "author": "\"Jeeka Pascual <jeeka@seaberry.io>",
+  "license": "MIT",
+  "dependencies": {
+    "express": "~4.12.3",
+    "mongoose": "~4.0.1",
+    "body-parser": "~1.12.2",
+    "lodash": "~3.6.0",
+    "underscore": "~1.8.3"
+  },
+  "devDependencies": {
+    "gulp": "~3.8.11",
+    "gulp-coffee": "~2.3.1",
+    "gulp-sass": "~1.3.3",
+    "node-require-directory": "~1.0.2",
+    "gulp-debug": "~2.0.1",
+    "gulp-tap": "~0.1.3"
+  }
+}

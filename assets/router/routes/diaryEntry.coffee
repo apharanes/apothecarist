@@ -11,7 +11,7 @@ exports.index = (req, res) ->
 
 ### Load diary entry by Id ###
 exports.load = (req, res) ->
-	DiaryEntry.find timestamp: req.params.timestamp, (err, diaryEntry) ->
+	DiaryEntry.findById req.params.diaryEntry_id, (err, diaryEntry) ->
 		if err then res.send(err)
 		else 
 			if diaryEntry == null then res.json([])
@@ -42,7 +42,7 @@ exports.createByProfile = (req, res) ->
 
 ### Update diaryEntry ###
 exports.update = (req, res) ->
-	return DiaryEntry.findOne timestamp: req.params.timestamp, (err, diaryEntry) ->
+	return DiaryEntry.findById req.params.diaryEntry_id, (err, diaryEntry) ->
 		if err
 			console.log(err)
 			res.send(err)
@@ -56,7 +56,7 @@ exports.update = (req, res) ->
 
 ### Delete diaryEntry ###
 exports.destroy = (req, res) ->
-	return DiaryEntry.remove timestamp: req.params.timestamp, (err, diaryEntry) ->
+	return DiaryEntry.remove _id: req.params.diaryEntry_id, (err, diaryEntry) ->
 		if err then res.send(err)
 		else res.json message: 'Successfully deleted diaryEntry ' + req.params.diaryEntry_id
 			

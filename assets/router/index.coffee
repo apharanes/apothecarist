@@ -27,9 +27,9 @@ module.exports = (app) ->
 	app.get 	'/api/diaryEntry/by/profile/:profile_id', diaryEntry.listByProfile
 	app.post 	'/api/diaryEntry/by/profile/:profile_id', diaryEntry.createByProfile
 	app.delete 	'/api/diaryEntry/by/profile/:profile_id', diaryEntry.destroyByProfile
-	app.get 	'/api/diaryEntry/:timestamp', diaryEntry.load
-	app.put 	'/api/diaryEntry/:timestamp', diaryEntry.update
-	app.delete 	'/api/diaryEntry/:timestamp', diaryEntry.destroy
+	app.get 	'/api/diaryEntry/:diaryEntry_id', diaryEntry.load
+	app.put 	'/api/diaryEntry/:diaryEntry_id', diaryEntry.update
+	app.delete 	'/api/diaryEntry/:diaryEntry_id', diaryEntry.destroy
 	
 	app.get 	'/api/item', item.index
 	app.post 	'/api/item', item.create

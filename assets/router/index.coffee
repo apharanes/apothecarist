@@ -1,12 +1,13 @@
 express = require 'express'
 app = express()
 
-brew 		= require './routes/brew'
-profile 	= require './routes/profile'
-diaryEntry 	= require './routes/diaryEntry'
-item 		= require './routes/item'
-recipe 		= require './routes/recipe'
-recipeItem 	= require './routes/recipeItem'
+brew 			= require './routes/brew'
+profile 		= require './routes/profile'
+diaryEntry 		= require './routes/diaryEntry'
+diaryEntryItem	= require './routes/diaryEntryItem'
+item 			= require './routes/item'
+recipe 			= require './routes/recipe'
+recipeItem 		= require './routes/recipeItem'
 
 module.exports = (app) ->
 	app.get 	'/api/brew', brew.index
@@ -30,6 +31,15 @@ module.exports = (app) ->
 	app.get 	'/api/diaryEntry/:diaryEntry_id', diaryEntry.load
 	app.put 	'/api/diaryEntry/:diaryEntry_id', diaryEntry.update
 	app.delete 	'/api/diaryEntry/:diaryEntry_id', diaryEntry.destroy
+	
+	app.get		'/api/diaryEntryItem', diaryEntryItem.index
+	app.get		'/api/diaryEntryItem/by/diaryEntry/:diaryEntry_id', diaryEntryItem.listByDiaryEntry
+	app.post	'/api/diaryEntryItem/by/diaryEntry/:diaryEntry_id', diaryEntryItem.createByDiaryEntry
+	app.post	'/api/diaryEntryItem', diaryEntryItem.create
+	app.get		'/api/diaryEntryItem/:diaryEntryItem_id', diaryEntryItem.load
+	app.put		'/api/diaryEntryItem/:diaryEntryItem_id', diaryEntryItem.update
+	app.delete	'/api/diaryEntryItem/:diaryEntryItem_id', diaryEntryItem.destroy
+	app.delete	'/api/diaryEntryItem/by/diaryEntry/:diaryEntry_id', diaryEntryItem.destroyByDiaryEntry
 	
 	app.get 	'/api/item', item.index
 	app.post 	'/api/item', item.create

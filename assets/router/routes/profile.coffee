@@ -3,10 +3,10 @@ Profile = require '../../models/profile'
 
 ### List profiles ###
 exports.index = (req, res) ->
-    Profile.find {}, (err, profiles) ->
-        if err then res.send(err)
-        else res.json(profiles)
-            
+	Profile.find {}, (err, profiles) ->
+		if err then res.send(err)
+		else res.json(profiles)
+
 ### Create profile ###
 exports.create = (req, res) ->
 	profile = new Profile(req.body)    

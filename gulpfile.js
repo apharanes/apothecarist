@@ -1,7 +1,8 @@
 var gulp = require('gulp'),
     tap = require('gulp-tap'),
     coffee = require('gulp-coffee'),
-    sass = require('gulp-sass');
+    sass = require('gulp-sass'),
+	jsdoc = require('gulp-jsdoc');
 
 gulp.task('default', ['watch']);
 
@@ -22,7 +23,13 @@ gulp.task('compile-sass', function () {
    .pipe(gulp.dest('./app'));
 });
 
+gulp.task('compile-jsdocs', function () {
+	gulp.src('./app/**/*.js')
+	.pipe(jsdoc('./docs'));
+});
+
 gulp.task('watch', function () {
     gulp.watch('./assets/**/*.coffee', ['compile-coffee']);
     gulp.watch('./assets/*.scss', ['compile-sass']);
+	gulp.watch('./app/**/*.js', ['compile-jsdocs']);
 });

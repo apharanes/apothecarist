@@ -40,6 +40,8 @@ gulp.task('browserify', function () {
 	.pipe(gulp.dest('./app/public/js'));
 });
 
+gulp.task('default', ['compile-coffee', 'compile-sass', 'browserify', 'compile-jsdocs' ]);
+
 gulp.task('watch', function () {
     gulp.watch('./assets/**/*.coffee', ['compile-coffee']);
     gulp.watch('./assets/**/*.scss', ['compile-sass']);

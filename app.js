@@ -3,7 +3,8 @@
 var express = require('express'),
     app = express(),
     bodyParser = require('body-parser'),
-    methodOverride = require('method-override');
+    methodOverride = require('method-override'),
+	cors = require('cors');
 
 var port = process.env.PORT || 4400;
 var mongoose = require('mongoose');
@@ -11,6 +12,7 @@ mongoose.connect('mongodb://localhost:27017/forest-ranger');
 
 app.set('view engine', 'html');
 
+app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true}));
 app.use(bodyParser.json());
 app.use(bodyParser.json({ type: 'application/vnd.api+json' }));

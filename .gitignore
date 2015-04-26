@@ -2,3 +2,4 @@ node_modules/**
 app/router/
 app/models/
 docs
+app/public/libs/

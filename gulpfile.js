@@ -18,7 +18,7 @@ gulp.task('compile-coffee', function () {
 });
 
 gulp.task('compile-sass', function () {
-   gulp.src('./assets/*.scss')
+   gulp.src('./assets/**/*.scss')
    .pipe(sass())
    .pipe(gulp.dest('./app'));
 });
@@ -30,6 +30,6 @@ gulp.task('compile-jsdocs', function () {
 
 gulp.task('watch', function () {
     gulp.watch('./assets/**/*.coffee', ['compile-coffee']);
-    gulp.watch('./assets/*.scss', ['compile-sass']);
+    gulp.watch('./assets/**/*.scss', ['compile-sass']);
 	gulp.watch('./app/**/*.js', ['compile-jsdocs']);
 });

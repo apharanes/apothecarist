@@ -2,7 +2,11 @@ var gulp = require('gulp'),
     tap = require('gulp-tap'),
     coffee = require('gulp-coffee'),
     sass = require('gulp-sass'),
-	jsdoc = require('gulp-jsdoc');
+	jsdoc = require('gulp-jsdoc'),
+	browserify = require('browserify'),
+	source = require('vinyl-source-stream'),
+	reactify = require('reactify'),
+	concat = require('gulp-concat');
 
 gulp.task('default', ['watch']);
 
@@ -28,8 +32,17 @@ gulp.task('compile-jsdocs', function () {
 	.pipe(jsdoc('./docs'));
 });
 
+gulp.task('browserify', function () {
+	var bundler = browserify('./assets/public/js/main.js');
+	bundler.transform(reactify);
+	var stream = bundler.bundle();
+	stream.pipe(source('main.js'))
+	.pipe(gulp.dest('./app/public/js'));
+});
+
 gulp.task('watch', function () {
     gulp.watch('./assets/**/*.coffee', ['compile-coffee']);
     gulp.watch('./assets/**/*.scss', ['compile-sass']);
 	gulp.watch('./app/**/*.js', ['compile-jsdocs']);
+	gulp.watch('./assets/public/js/**/*.js', ['browserify']);
 });

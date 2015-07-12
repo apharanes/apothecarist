@@ -85,11 +85,12 @@ var Diary = React.createClass({
 		}.bind(this));
 	},
 	render: function () {
-		var diaryEntries = this.state.diaryEntries.map(function (diaryEntry) {
+		var diaryEntries = this.state.diaryEntries.map(function (diaryEntry, index) {
 		  return (
 			  <DiaryEntry 
 				title={diaryEntry.title}
 				date={diaryEntry.date}
+				key={index}
 				/>
 		  );
 		});

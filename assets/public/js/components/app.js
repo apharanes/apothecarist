@@ -33,7 +33,7 @@ var ProfileList = React.createClass({
 	render: function () {
 		var profiles = this.state.profiles.map(function (profile) {
 			return (
-				<Profile name={profile.name} key={profile._id} />
+				<Profile profile={profile} key={profile._id} />
 			);
 		});
 		
@@ -46,11 +46,24 @@ var ProfileList = React.createClass({
 	}
 });
 
-var Profile = React.createClass({
+var Profile = React.createClass({	
+	getInitialState: function () {
+		return { profile: this.props.profile }
+	},
+	componentDidMount: function () {
+		if (this.isMounted()) {
+			this.setState({
+				profile: this.props.profile
+			});
+		}
+	},	
 	render: function () {
+		var profile = this.state.profile;
+
 		return (
 			<div className="profile">
-				{this.props.name}
+				<h3>{profile.name}</h3>
+				<Diary profile={profile}/>
 			</div>
 		);
 	}

@@ -73,6 +73,17 @@ var Diary = React.createClass({
 	getInitialState: function () {
 		return { diaryEntries: []};
 	},
+	componentWillMount: function () {
+		var profileId = this.props.profile._id;
+
+		$.get("/api/diaryEntry/by/profile/" + profileId, function(res) {
+			if (this.isMounted()) {
+				this.setState({
+					diaryEntries: res
+				});
+			}
+		}.bind(this));
+	},
 	render: function () {
 		var diaryEntries = this.state.diaryEntries.map(function (diaryEntry) {
 		  return (
@@ -85,7 +96,7 @@ var Diary = React.createClass({
 		
 		return (
 			<div className="diary">
-				<h2>Diary of {this.props.profile}</h2>
+				<h3>Diary of {this.props.profile.name}</h3>
 				{diaryEntries}
 			</div>
 		);

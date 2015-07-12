@@ -11,7 +11,7 @@ APP = React.createClass({
 		return (
 			<div>
 				<h1>Apothecarist</h1>
-				<ProfileList profiles="http://localhost:4400/api/profile" />
+				<ProfileList profiles="/api/profile" />
 			</div>
 		);
 	}
